@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use App\Enums\SystemPermission;
+
+class DummyClass extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // Reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+        // create permissions
+        $read = Permission::create(['name' => 'DummyRoute.index', 'module' => 'DummyModule', 'permission' => SystemPermission::Read]);
+        Permission::create(['name' => 'DummyRoute.show', 'module' => 'DummyModule', 'parent_permission' => $read->id]);
+
+        $create = Permission::create(['name' => 'DummyRoute.create', 'module' => 'DummyModule', 'permission' => SystemPermission::Create]);
+        Permission::create(['name' => 'DummyRoute.store', 'module' => 'DummyModule', 'parent_permission' => $create->id]);
+
+        $update = Permission::create(['name' => 'DummyRoute.edit', 'module' => 'DummyModule', 'permission' => SystemPermission::Update]);
+        Permission::create(['name' => 'DummyRoute.update', 'module' => 'DummyModule', 'parent_permission' => $update->id]);
+
+        Permission::create(['name' => 'DummyRoute.destroy', 'module' => 'DummyModule', 'permission' => SystemPermission::Delete]);
+    }
+}

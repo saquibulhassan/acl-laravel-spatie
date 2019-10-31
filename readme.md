@@ -14,19 +14,25 @@ With Spatie we can control access permission using bellow approach.
 - Using Middleware : We have set middleware with every route. That is time consuming for development.
 - Using construct function in every controller. It is also boring.
 
-So We made this solutions to minimize the above issue. We made a Middleware that's can verify every request. So now we don't have to repeat ourself again & again to develop ACL. 
+So We made this implementation to minimize the above issue. We made a Middleware that's can verify every request. So now we don't have to repeat ourself again & again to develop ACL. 
 
-This approach also come with one limitations. That is every route must have a name. Without name of route this solutions will not work.
+This implementation also come with one limitations. That is every route must have a name. Without name of route this implementation will not work.
 
 We also made a php artisan command to create seed for permission. But this will work only with resource controller. If you need any other method except default method then you have to modify the seed file yourself. 
 
 ``` bash
-php artisan SeedFileName ResourceControllerRouteName ModuleName 
+php artisan SeedFileName ResourceControllerRouteName ModuleName
 ```
 
-For Example : 
+Example :
+For Web based resource controller 
 ``` bash
 php artisan PermissionDepartmentSeeder department Department 
+```
+
+For api based resource controller 
+``` bash
+php artisan PermissionDepartmentSeeder department Department --api
 ```
 
 After running this command we will get the bellow file in seed directory.
@@ -63,7 +69,7 @@ class PermissionDepartmentSeeder extends Seeder
 }
 ```
 
-We can modify this file as per as our requirements.
+We can modify this file as per as our requirements. The create & edit permission are omitted when you need API. 
 
 
 ### Middleware

@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\SystemPermission;
+use App\Enums\AclEnum;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
@@ -17,15 +17,15 @@ class PermissionDepartmentSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        $read = Permission::create(['name' => 'department.index', 'module' => 'Department', 'permission' => SystemPermission::Read]);
+        $read = Permission::create(['name' => 'department.index', 'module' => 'Department', 'permission' => AclEnum::Read]);
         Permission::create(['name' => 'department.show', 'module' => 'Department', 'parent_permission' => $read->id]);
 
-        $create = Permission::create(['name' => 'department.create', 'module' => 'Department', 'permission' => SystemPermission::Create]);
+        $create = Permission::create(['name' => 'department.create', 'module' => 'Department', 'permission' => AclEnum::Create]);
         Permission::create(['name' => 'department.store', 'module' => 'Department', 'parent_permission' => $create->id]);
 
-        $update = Permission::create(['name' => 'department.edit', 'module' => 'Department', 'permission' => SystemPermission::Update]);
+        $update = Permission::create(['name' => 'department.edit', 'module' => 'Department', 'permission' => AclEnum::Update]);
         Permission::create(['name' => 'department.update', 'module' => 'Department', 'parent_permission' => $update->id]);
 
-        Permission::create(['name' => 'department.destroy', 'module' => 'Department', 'permission' => SystemPermission::Delete]);
+        Permission::create(['name' => 'department.destroy', 'module' => 'Department', 'permission' => AclEnum::Delete]);
     }
 }

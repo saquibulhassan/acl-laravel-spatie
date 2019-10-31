@@ -7,6 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputArgument;
 use App\Enums\SystemModule;
+use Symfony\Component\Console\Input\InputOption;
 
 class PermissionSeederMakeCommand extends GeneratorCommand
 {
@@ -72,7 +73,13 @@ class PermissionSeederMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/Stubs/PermissionSeeder.stub';
+        $isApi = $this->option('api');
+
+        if($isApi) {
+            return __DIR__.'/Stubs/ApiPermissionSeeder.stub';
+        } else {
+            return __DIR__.'/Stubs/PermissionSeeder.stub';
+        }
     }
 
     /**
@@ -108,6 +115,19 @@ class PermissionSeederMakeCommand extends GeneratorCommand
             ['name', InputArgument::REQUIRED, 'The name of the seed class'],
             ['route', InputArgument::REQUIRED, 'The resource route name'],
             ['module', InputArgument::REQUIRED, 'The module name'],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     *
+     */
+    protected function getOptions()
+    {
+        return [
+            ['api', NULL, NULL, 'Use for resource api']
         ];
     }
 

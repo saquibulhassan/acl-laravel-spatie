@@ -29,11 +29,12 @@ class AccessControlList
         $routeName = $request->route()->action['as'];
 
         if (!Auth::user()->hasPermissionTo($routeName)) {
-            abort('401');
-        } else {
-            return $next($request);
+            if (!$request->expectsJson()) {
+                abort('401');
+            } else {
+                return response()->json(['error' => 'Sorry! You are not permitted to access this page'], 401);
+            }
         }
-
 
         return $next($request);
     }

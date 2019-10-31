@@ -167,6 +167,7 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
 
 

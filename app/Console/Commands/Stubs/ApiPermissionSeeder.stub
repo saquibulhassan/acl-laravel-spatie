@@ -20,12 +20,8 @@ class DummyClass extends Seeder
         $read = Permission::create(['name' => 'DummyRoute.index', 'module' => 'DummyModule', 'permission' => AclEnum::Read]);
         Permission::create(['name' => 'DummyRoute.show', 'module' => 'DummyModule', 'parent_permission' => $read->id]);
 
-        $create = Permission::create(['name' => 'DummyRoute.create', 'module' => 'DummyModule', 'permission' => AclEnum::Create]);
-        Permission::create(['name' => 'DummyRoute.store', 'module' => 'DummyModule', 'parent_permission' => $create->id]);
-
-        $update = Permission::create(['name' => 'DummyRoute.edit', 'module' => 'DummyModule', 'permission' => AclEnum::Update]);
-        Permission::create(['name' => 'DummyRoute.update', 'module' => 'DummyModule', 'parent_permission' => $update->id]);
-
+        Permission::create(['name' => 'DummyRoute.store', 'module' => 'DummyModule', 'permission' => AclEnum::Create]);
+        Permission::create(['name' => 'DummyRoute.update', 'module' => 'DummyModule', 'permission' => AclEnum::Update]);
         Permission::create(['name' => 'DummyRoute.destroy', 'module' => 'DummyModule', 'permission' => AclEnum::Delete]);
     }
 }

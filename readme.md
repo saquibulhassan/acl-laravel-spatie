@@ -86,3 +86,6 @@ Route::group(['middleware' => ['acl']], function () {
 });
 ```
 
+### N.B.
+Please remember only department module is filtered with here. But you can filter any module with this ACL. 
+

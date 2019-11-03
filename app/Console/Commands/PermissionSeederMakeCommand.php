@@ -6,8 +6,6 @@ use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputArgument;
-use App\Enums\SystemModule;
-use Symfony\Component\Console\Input\InputOption;
 
 class PermissionSeederMakeCommand extends GeneratorCommand
 {

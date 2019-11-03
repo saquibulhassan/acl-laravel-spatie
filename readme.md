@@ -88,8 +88,6 @@ use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputArgument;
-use App\Enums\SystemModule;
-use Symfony\Component\Console\Input\InputOption;
 
 class PermissionSeederMakeCommand extends GeneratorCommand
 {
@@ -363,18 +361,18 @@ Add this middleware to "$routeMiddleware" group of "Kernel.php" file in app/Http
 Your configuration is almost complete. Now run the bellow php artisan command to create seed file for permission. But this will work only with resource controller. If you need any other method except default method then you have to modify the seed file yourself. 
 
 ``` bash
-php artisan SeedFileName ResourceControllerRouteName ModuleName
+php artisan make:permission:seeder SeedFileName ResourceControllerRouteName ModuleName
 ```
 
 Example :
 For Web based resource controller 
 ``` bash
-php artisan PermissionDepartmentSeeder department Department 
+php artisan make:permission:seeder PermissionDepartmentSeeder department Department 
 ```
 
 For api based resource controller 
 ``` bash
-php artisan PermissionDepartmentSeeder department Department --api
+php artisan make:permission:seeder PermissionDepartmentSeeder department Department --api
 ```
 
 After running this command we will get the bellow file in seed directory.

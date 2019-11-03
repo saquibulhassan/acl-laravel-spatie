@@ -33,16 +33,16 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|unique:departments'
+            'name' => 'required|unique:departments',
         ]);
 
-        $department = new Department();
+        $department       = new Department();
         $department->name = $request->name;
         $department->save();
 
@@ -54,7 +54,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Spatie\Department\Models\Department  $department
+     * @param \Spatie\Department\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function show(Department $department)
@@ -65,7 +65,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Spatie\Department\Models\Department  $department
+     * @param \Spatie\Department\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function edit(Department $department)
@@ -76,14 +76,14 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Spatie\Department\Models\Department  $department
+     * @param \Illuminate\Http\Request $request
+     * @param \Spatie\Department\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Department $department)
     {
         $this->validate($request, [
-            'name' => 'required|unique:departments,name,'.$department->id.',id'
+            'name' => 'required|unique:departments,name,' . $department->id . ',id',
         ]);
 
         $department->name = $request->name;
@@ -97,7 +97,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Spatie\Department\Models\Department  $department
+     * @param \Spatie\Department\Models\Department $department
      * @return \Illuminate\Http\Response
      */
     public function destroy(Department $department)
